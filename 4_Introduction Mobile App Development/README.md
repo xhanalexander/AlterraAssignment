@@ -1,6 +1,6 @@
 # Resume Materi KMFlutter – Introduction Mobile App Development
 
-## Pengertian Software
+## Software
 
 Dalam materi video dijelaskan Software merupakan perangkat lunak yang tersimpan dan dapat dikendalikan pada sistem komputer, yang terbentuk dari berupa isi perintah-perintah dan tidak memiliki bentuk fisik.
 
