@@ -1,10 +1,12 @@
 # (4) Introduction Mobile App Development
 
-## Software
+## Summary
+
+### Software
 
 Dalam materi video dijelaskan Software merupakan perangkat lunak yang tersimpan dan dapat dikendalikan pada sistem komputer, yang terbentuk dari berupa isi perintah-perintah dan tidak memiliki bentuk fisik.
 
-## Pengembangan Software
+### Pengembangan Software
 
 Untuk mengembangkan software, developer harus menggunakan bahasa pemrograman, Bahasa pemrograman ini merupakan rangkaian teks yang digunakan untuk memberi perintah kepada komputer. Apabila developer sudah membuat source code, maka source code tersebut akan diterjemahkan ke dalam sebuah mesin yang terdapat 2 cara untuk menerjemahkan source code tersebut. yaitu dengan cara **Compiler** dan **Interpreter**.
 
@@ -12,6 +14,8 @@ Untuk mengembangkan software, developer harus menggunakan bahasa pemrograman, Ba
 
 Sedangkan untuk **Interpreter**, merupakan software yang membaca perintah-perintah dalam bahasa pemrograman dan menjalankan dari perintah-perintah tersebut. Cara kerja Interpreter yaitu source code yang sudah dibuat oleh devs akan diduplikat dan hasil duplikat tersebut akan diterjemahkan oleh Interpreter.
 
-## Mobile App Development
+### Mobile App Development
 
-Merupakan pengembangan aplikasi yang khusus untuk perangkat mobile. Terdapat 2 pengembangannya yang pertama untuk iOS dan Android.  
+Merupakan pengembangan aplikasi yang khusus untuk perangkat mobile. Terdapat 2 pengembangannya yang pertama untuk iOS dan Android.
+
+link tugas Praktikum pertama [Google docs.](https://docs.google.com/document/d/1fFZjCOpn1-otFzXMR5zQbhDmMeMNjYx1FJo-l8_dn60/edit?usp=sharing)
