@@ -44,7 +44,7 @@ double rectanglePerimeter(double x, double y) {
 double roundArea(double x) {
   double result;
   result = pi * pow(x, 2);
-  result.toDouble();
+  result;
   return result;
 }
 

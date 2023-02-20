@@ -2,19 +2,19 @@ import 'dart:io';
 import 'dart:math';
 
 void main() {
-  // callBack();
-  tubeVolume();
+  callBack();
+  // tubeVolume();
 }
 
 void callBack() {
-  print(">> Masukkan nama Anda \t:... ");
+  print(">> Masukkan nama Lengkap Anda \t\t=...!!! ");
   String? x = stdin.readLineSync();
-  print(">> Masukkan Asal Kota Anda Tinggal \t:... ");
+  print(">> Masukkan Asal Kota Anda Tinggal \t=...!!! ");
   String? y = stdin.readLineSync();
-  print(">> Program Kelas yang sedang Anda Ikutin \t:...");
+  print(">> Program Kelas yang sedang Diikuti \t=...!!!");
   String? z = stdin.readLineSync();
 
-  print("\n(++) Halo, $x Selamat Datang di $y, di kelas program $z");
+  print("\n(++) Halo $x, Selamat Datang di $y, di kelas program $z");
 }
 
 void tubeVolume() {

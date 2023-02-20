@@ -8,7 +8,7 @@
 
 ###  Cara Kerja Git
 
-![Staging Area Steps](/5_Basic%20Version%20and%20Branch%20Management/StageArea.png)
+![Staging Area Steps](/05_Basic%20Version%20and%20Branch%20Management/StageArea.png)
 
 git memiliki cara kerja dengan disebut dengan staging area, terdapat 3 yang bekerja dalam local kita, yang pertama terdapat tahap **Working directory**, yaitu sebuah checkout dari satu versi projek. Kumpulan file ini akan ditarik dari database yang sudah di-zip-kan dalam direktori Git. Kedua terdapat **Staging Area**, pada tahap ini umumnya berada pada direktori Git kita, yang menyimpan informasi tentang apa yang akan dicommit  selanjutnya. Terkadang disebut juga sebagai index, tetapi sering disebut sebagai staging area,contohnya menggunakan CLI seperti `git add`. Sehingga seluruh perubahan code tersebut apabila sudah siap ada maka sisanya menggunakan CLI yaitu `git push` untuk mengupload ke git **repository** tujuannya.
 
