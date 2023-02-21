@@ -6,6 +6,7 @@ void main() {
 }
 
 void score() {
+  // int x = 75;
   print(">> Masukkan nilai =...!!! ");
   int x = int.parse(stdin.readLineSync()!);
 
@@ -13,8 +14,8 @@ void score() {
 }
 
 void loopTen() {
-  for (int i = 1; i <= 10; i++) {
+  int i = 1;
+  for (i = 1; i <= 10; i++) {
     print("> $i");
   }
 }
-
