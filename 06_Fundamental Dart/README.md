@@ -8,7 +8,7 @@ Dart merupakan bahasa pemrograman dengan tujuan yang dirancang untuk membangun a
 
 ### Fitur dari Dart
 
-* **Multi-Platform**
+* **Multi-Platform** 📱💻
 Dart adalah bahasa pemrograman yang Multi-Platform atau platform independen yang berarti dapat dijalankan pada sistem operasi yang berbeda seperti Windows, Linux, Unix dan MacOS, dll.
 
 * **General Purpose**
@@ -23,7 +23,7 @@ Dart juga dapat mendukung multi-paradigma yang berari pemrograman imperatif, fun
 * **Simple Syntax**
 Sintaks dari Dart merupakan sintaksis dengan gaya-C sederhana. Programmer pemula dapat dengan mudah mempelajari sintaks Dart.
 
-* **Automatic Garbage Collection**
+* **Automatic Garbage 🗑️ Collection**
 Dart juga menyediakan fitur pengumpul sampah otomatis.
 
 * **Open Source**
@@ -36,8 +36,8 @@ Dart juga menyediakan berbagai macam dukungan library inbuilt.
 
 ```
 void main() {
-    print("hello Dart");        // output "hello Dart"
-    // print("World");          // tidak menghasilkan output hanya komentar
+    print("hello Dart");        // output "hello Dart" 👋
+    // print("World");          // tidak menghasilkan output hanya komentar 
 
     var age;                    // mendeklarasikan variabel #1
     age = 21;                   // memberi nilai pada variabel #2 
@@ -48,8 +48,8 @@ void main() {
     
     int height = 145;           // bilangan bulat
     double weight = 45.0;       // bilangan pecahan 
-    bool life = true;           // benar atau salah
-    string desc = 'i'm live';   // deskripsi teks
+    bool life = true;           // benar ✅ atau salah ❌
+    string desc = 'i'm live';   // deskripsi teks 💬
 
     print(9 + 10);              // output = 19 (arithmetic)
     print(9 == 10);             // output = false (comparison)
