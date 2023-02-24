@@ -54,6 +54,8 @@ void main() {
     print(9 + 10);              // output = 19 (arithmetic)
     print(9 == 10);             // output = false (comparison)
     print(1 == 2 && 2 == 1);    // output = false (logical)
+
+                                // tipe data <num> bisa menerima integer dan double
     
 }
 ```
