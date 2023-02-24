@@ -2,7 +2,7 @@
 
 void main() {
   carList();
-  redundant();
+  // redundant();
 }
 
 void carList() {
@@ -32,16 +32,25 @@ void carList() {
 }
 
 void redundant() {
-  List<int> numbers = [1, 2, 2, 3, 4, 4, 4, 5, 5];
+  List<String> language = [
+    'js',
+    'js',
+    'js',
+    'golang',
+    'python',
+    'js',
+    'js',
+    'golang',
+    'rust'
+  ];
 
-  var countMap = <int, int>{};
-  for (var num in numbers) {
-    countMap[num] = (countMap[num] ?? 0) + 1;
+  Map<String, int> duplicates = {};
+
+  for (String element in language) {
+    duplicates[element] = (duplicates[element] ?? 0) + 1;
   }
 
-  var duplicates = countMap.entries.where((entry) => entry.value > 1);
-  print('Number of duplicates: ${duplicates.length}');
-  for (var entry in duplicates) {
-    print('Number ${entry.key} has ${entry.value} occurrences');
+  for (String key in duplicates.keys) {
+    print('> $key: ${duplicates[key]}');
   }
 }

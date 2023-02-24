@@ -10,7 +10,7 @@ void score() {
   print(">> Masukkan nilai =...!!! ");
   int x = int.parse(stdin.readLineSync()!);
 
-  x >= 90 ? print("> Nilai A") : (x >= 40) ? print("> Nilai B") : (x > 0) ? print("> Nilai C") : print("...");
+  x >= 70 ? print("> Nilai A") : (x >= 40) ? print("> Nilai B") : (x > 0) ? print("> Nilai C") : print("...");
 }
 
 void loopTen() {

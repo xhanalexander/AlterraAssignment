@@ -70,7 +70,7 @@ void main() {
 
 Perulangan akan menjalan proses secara berulang kali. Ada berberapa operator seperti `for (initialisation; condition; updater)` yang harus memerlukan nilai awal, nilai bool apabila true maka akan dilanjutkan, dan nilai pengubah. Kemudian ada `while (condition)` perulangan ini tidak diketahui berapa kali perulangan, dan memerulukan nilai bool jika benar maka perulangan akan dilanjutkan. Dan ada operator `do while (condition)` perulangan yang dijalankan dengan minimum sekali dan akan diteruskan apabila nilai bool tersebut true. Dalam perulangan tersebut ada caranya untuk menghentikan program perulangan tersebut yaitu dengan operator `break` dan `continue`. Kedua operator ini akan menghentikan perulangan dengan mengabaikan nilai boolean, untuk continue hanya dapat menghentikan satu kali proses.
 
-### Fungsi - Function
+### Function
 
 ```
 
