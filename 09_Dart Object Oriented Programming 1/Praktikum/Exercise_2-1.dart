@@ -1,26 +1,21 @@
 class calculator {
   int a = 0;
   int b = 0;
-  int c = 0;
 
   add(int a, int b) {
-    c = a + b;
-    return c;
+    return a + b;
   }
 
   subtract(int a, int b) {
-    c = a - b;
-    return c;
+    return a - b;
   }
 
   multiply(int a, int b) {
-    c = a * b;
-    return c;
+    return a * b;
   }
 
   divide(int a, int b) {
-    c = a ~/ b;
-    return c;
+    return a ~/ b;
   }
 }
 
