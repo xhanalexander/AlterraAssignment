@@ -1,7 +1,7 @@
 class Hewan {
   double berat;
 
-  Hewan({required this.berat});
+  Hewan({required this.berat});     // Constructor
 }
 
 class Mobil {
