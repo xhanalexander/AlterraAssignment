@@ -2,4 +2,14 @@
 
 ## Summary
 
-### 
+#### Constructur, Inheritance, & Overriding Method
+
+Constructur, Inheritance, & Overriding Method merupakan bagian dari pemrograman berorientasi objek atau OOP. **Constructur** merupakan metode khusus yang digunakan untuk membuat dan menginisialisasi objek. dan ini dipanggil ketika objek dibuat, dan tujuan utamanya adalah untuk menetapkan nilai awal properti objek. Di Dart, konstruktor didefinisikan menggunakan nama kelas diikuti dengan tanda kurung. **Inheritance** merupajan mekanisme dimana satu class dapat mewarisi properti dan perilaku ke class lain. Class yang diwariskan disebut _superclass_, dan class yang diwarisi darinya disebut _subclass_. Di Dart, subclass dapat mewarisi properti dan metode dari superclass menggunakan kata kunci _extends_. **Overriding Method** adalah proses mengimplementasi metode yang baru yang ada di subclass. Ini memungkinkan subclass untuk menyesuaikan perilaku metode untuk kebutuhannya sendiri. Di Dart, subclass dapat Overriding Method dari superclass-nya dengan menyediakan implementasi baru dari metode tersebut dengan nama dan tanda yang sama.
+
+#### Interface & Abstract Class
+
+**Interface** merupakan kontrak antara dua objek, yang mendefinisikan sekumpulan metode yang harus diterapkan oleh class. Dan ini memberikan blueprint untuk class dan memungkinkan class yang berbeda untuk mengimplementasikan interface yang sama, yang memastikan konsistensi dalam perilaku. Di Dart, interface didefinisikan menggunakan kata kunci `implements`. Di sisi lain, **Abstract Class** adalah class yang tidak dapat dibuat instance-nya dan berfungsi sebagai class dasar dan untuk class lain. Ini juga menyediakan beberapa metode dan properti umum yang dapat diwariskan oleh subclass, tetapi juga memungkinkan subclass untuk mengimplementasikan metode dan propertinya sendiri. Di Dart, abstract class ditentukan menggunakan kata kunci `abstract`. Yang membuat perbedaan utama antara Interface dan abstract class adalah sebuah class dapat mengimplementasikan banyak interface, tetapi hanya dapat mewarisi dari satu abstract class. Perbedaan lainnya adalah interface hanya mendefinisikan tanda metode, sedangkan abstract class juga dapat menyertakan metode implements.
+
+#### Polymorphism & Generics
+
+**Polymorphism** merupakan kemampuan suatu objek yang bisa mengambil berbagai bentuk. Dalam konteks OOP, Polymorphism memungkinkan objek diperlakukan sebagai turunan dari kelas induknya, serta turunan dari setiap kelas yang mengimplementasikan kelas induk. Hal ini memungkinkan objek untuk digunakan secara bergantian, selama mereka mematuhi antarmuka yang sama atau berbagi kelas induk yang sama. Polymorphism dapat dicapai melalui pewarisan, Interface, dan Overriding Method. **Generics**, di sisi lain, mengacu pada cara membuat kelas dan metode yang dapat bekerja dengan banyak tipe data. Dengan menggunakan tipe Generics, Anda dapat menulis kode yang dapat digunakan kembali yang berfungsi dengan tipe data yang berbeda tanpa harus menulis kode yang berlebihan untuk setiap tipe. Generics banyak digunakan dalam kelas koleksi seperti List, Set, dan Map untuk memberikan keamanan dan fleksibilitas tipe.
