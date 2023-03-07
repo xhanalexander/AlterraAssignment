@@ -1,5 +1,4 @@
-import 'dart:html';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const CupertinoApp(
       home: Contents(),
     );
   }
@@ -23,21 +22,21 @@ class Contents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hello Alterra"),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text("Hello World"),
       ),
-      body: Center(
+      child: Center(
         child: RichText(
           text: TextSpan(
             text: "Hello my name is ",
-            style: const TextStyle(fontSize: 24),
+            style: const TextStyle(fontSize: 24, color: Colors.white),
             children: <TextSpan>[
-              TextSpan(text: name, style: const TextStyle( fontWeight: FontWeight.bold, fontSize: 24)),
+              TextSpan(text: name, style: const TextStyle( fontWeight: FontWeight.bold, fontSize: 24, color: Colors.white)),
             ],
           ),
         ),
-      ),
+      ), 
     );
   }
 }

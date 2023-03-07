@@ -23,6 +23,7 @@ Beberapa perintah CLI yang dibutuhkan untuk mendevelop flutter, dan perintah yan
 Banyak built-in widget yang disediakan oleh flutter seperti Widget __Container__ yang salah satu widget yang sering digunakan di Flutter untuk membuat layout dengan kontrol yang lebih besar dan mengatur tampilan di dalamnya dengan lebih fleksibel. Kemudian Widget __MaterialApp / CupertinoApp__ adalah widget yang digunakan sebagai root atau induk dari seluruh aplikasi Flutter. Widget ini menyediakan konfigurasi dan properti penting seperti judul aplikasi, tema, routing, dan sebagainya. Bedanyanya kalau cupertino untuk development IOS dan materialApp untuk android development. dan Widget __Scaffold__ yang digunakan sebagai kerangka umum untuk mengatur tata letak dan tampilan pada aplikasi Flutter. Widget ini mengatur elemen-elemen penting seperti AppBar, drawer, dan bottom navigation. Dan juga Widget __Text__ adalah salah satu widget dasar yang digunakan untuk menampilkan teks pada aplikasi Flutter. Widget ini menyediakan berbagai properti seperti ukuran font, gaya, warna, dan lain-lain untuk memformat tampilan teks dengan mudah.
 
 ![Container di tengah](/11_Introduction%20Flutter%20Widget/screenshot/assets/container_a.png)
+
 _sumber_ : [Flutter Container](https://api.flutter.dev/flutter/widgets/Container-class.html)
 ```
 Center(
