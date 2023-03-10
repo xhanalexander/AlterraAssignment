@@ -25,8 +25,8 @@ void main() {
 
 void results() {
   calculator calc = new calculator();
-  print(calc.add(a: 10,b: 5));
-  print(calc.subtract(a: 10,b: 5));
-  print(calc.multiply(a: 10,b: 5));
-  print(calc.divide(a: 10,b: 5));
+  print(calc.add(a: 10, b: 5));
+  print(calc.subtract(a: 10, b: 5));
+  print(calc.multiply(a: 10, b: 5));
+  print(calc.divide(a: 10, b: 5));
 }
