@@ -2,19 +2,19 @@ class calculator {
   int a = 0;
   int b = 0;
 
-  add(int a, int b) {
+  add({required int a, required int b}) {
     return a + b;
   }
 
-  subtract(int a, int b) {
+  subtract({required int a, required int b}) {
     return a - b;
   }
 
-  multiply(int a, int b) {
+  multiply({required int a, required int b}) {
     return a * b;
   }
 
-  divide(int a, int b) {
+  divide({required int a, required int b}) {
     return a ~/ b;
   }
 }
@@ -25,8 +25,8 @@ void main() {
 
 void results() {
   calculator calc = new calculator();
-  print(calc.add(10, 5));
-  print(calc.subtract(10, 5));
-  print(calc.multiply(10, 5));
-  print(calc.divide(10, 5));
+  print(calc.add(a: 10,b: 5));
+  print(calc.subtract(a: 10,b: 5));
+  print(calc.multiply(a: 10,b: 5));
+  print(calc.divide(a: 10,b: 5));
 }
