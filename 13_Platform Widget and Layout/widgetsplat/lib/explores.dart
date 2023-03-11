@@ -46,6 +46,7 @@ class MyApssFlu extends StatelessWidget {
           children: titles
             .map((title) => ListTile(
                   title: Text(title),
+                  onTap: () {},
                 ))
         .toList(),
       )
