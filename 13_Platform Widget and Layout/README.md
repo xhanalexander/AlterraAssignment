@@ -7,7 +7,7 @@ Dalam Flutter penggunaan materialApp biasanya untuk mobile development seperti e
 |![method yang disediakan oleh MaterialApp](/13_Platform%20Widget%20and%20Layout/Screenshot/src/1.png)|![method yang disediakan oleh MaterialApp](/13_Platform%20Widget%20and%20Layout/Screenshot/src/2.png)       |
 |---                    |---    |
 
-namun dari keseluruhan method tersebut, hanya ada beberapa method dari pengalaman saya yang sering dipakai seperti `home`, `routes`, `title`, `theme`, `darkTheme`, `debugShowCheckedModeBanner` untuk menambah elemen dan selebihnya itu setelah method _home_ dan disisipkan method class yang disediakan, contohnya seperti `Scaffold` untuk membuat halaman.
+namun dari keseluruhan method tersebut, hanya ada beberapa method dari pengalaman saya yang sering dipakai seperti `home`, `routes`, `title`, `theme`, `darkTheme`, dan `debugShowCheckedModeBanner` untuk menambah elemen dan selebihnya itu setelah method _home_ dan disisipkan method class yang disediakan, contohnya seperti `Scaffold` untuk membuat halaman.
 
 <p style="text-align:center">
     <img src="/13_Platform%20Widget%20and%20Layout/Screenshot/src/ex.png" width="480">
@@ -26,4 +26,20 @@ untuk mengisi halaman sedikit berbeda dengan MaterialApp, soalnya ia hanya penam
     <img src="/13_Platform%20Widget%20and%20Layout/Screenshot/src/ex2.png" width="480">
 </p>
 
-### 
+### Library menggunakan Kedua Platform
+
+umumnya kita hanya bisa menggunakan salah satu platform widget yang tersedia di flutter, namun di Pub Package Manager terdapat Pub Package library yang bisa menggunakan kedua platform widget tersebut, yaitu [flutter_platform_widgets](https://github.com/stryder-dev/flutter_platform_widgets) yang dimiliki oleh akun github [stryder-dev](https://github.com/stryder-dev) dokumentasinya sudah disediakan juga oleh packgage-nya hanya saja menggunakannya, contoh penggunannya seperti contoh dibawah ini.
+
+```
+return PlatformElevatedButton(onPressed: onPressed, child: child);
+```
+dibandingkan dengan menulis sebuah baris yang menggunakan kondisi yang panjang.
+
+```
+if (Platform.isAndroid) {
+  return ElevatedButton(onPressed: onPressed, child: child);
+} else if (Platform.isIOS) {
+  return CupertinoButton.filled(onPressed: onPressed, child: child);
+}
+```
+
