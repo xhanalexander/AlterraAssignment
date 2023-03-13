@@ -4,6 +4,8 @@ import 'package:flutter_initicon/flutter_initicon.dart';
 class MatDes extends StatelessWidget {
   MatDes({super.key});
 
+  //https://gist.github.com/nadirbslmh/cd06fa46eea9188879e855499f919134
+
   final List<Map<String, String>> contactList = [
   {"avatar": "L", "name": "Leanne Graham", "phone": "1-770-736-8031 x56442"},
   {"avatar": "E", "name": "Ervin Howell", "phone": "010-692-6593 x09125"},
@@ -27,7 +29,7 @@ class MatDes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material Design'),
+        title: const Text('JSON ListView in Flutter'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
