@@ -7,14 +7,14 @@ Dalam Flutter penggunaan materialApp biasanya untuk mobile development seperti e
 |![method yang disediakan oleh MaterialApp](/13_Platform%20Widget%20and%20Layout/Screenshot/src/1.png)|![method yang disediakan oleh MaterialApp](/13_Platform%20Widget%20and%20Layout/Screenshot/src/2.png)       |
 |---                    |---    |
 
-namun dari keseluruhan method tersebut, hanya ada beberapa method dari pengalaman saya yang sering dipakai seperti `home`, `routes`, `title`, `theme`, `darkTheme`, dan `debugShowCheckedModeBanner` untuk menambah elemen dan selebihnya itu setelah method _home_ dan disisipkan method class yang disediakan, contohnya seperti `Scaffold` untuk membuat halaman.
+namun dari keseluruhan properti tersebut, hanya ada beberapa method dari pengalaman saya yang sering dipakai seperti `home`, `routes`, `title`, `theme`, `darkTheme`, dan `debugShowCheckedModeBanner` untuk menambah elemen dan selebihnya itu setelah method _home_ dan disisipkan method class yang disediakan, contohnya seperti `Scaffold` untuk membuat halaman.
 
 <p style="text-align:center">
     <img src="/13_Platform%20Widget%20and%20Layout/Screenshot/src/ex.png" width="480">
 </p>
 
 ### Struktur CupertinoApp
-Sedangkan dalam `CupertinoApp` seringnya untuk IOS development. Dengan widget-widget yang disediakan oleh flutter built-in. Masih sama beberapa method yang digunakan pada CupertinoApp seperti `home`, `color`, `debugShowCheckedModeBanner`, `routes`, `theme`, dan `title`.
+Sedangkan dalam `CupertinoApp` seringnya untuk IOS development. Dengan widget-widget yang disediakan oleh flutter built-in. Masih sama beberapa properti yang digunakan pada CupertinoApp seperti `home`, `color`, `debugShowCheckedModeBanner`, `routes`, `theme`, dan `title`.
 
 <p style="text-align:center">
     <img src="/13_Platform%20Widget%20and%20Layout/Screenshot/src/ex3.png" width="480">
