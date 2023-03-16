@@ -18,6 +18,7 @@ class _MyContactState extends State<MyContact> {
       appBar: AppBar(
         title: const Text('Contacts'),
         centerTitle: true,
+        backgroundColor: Color(0xff6750A4),
       ),
       backgroundColor: Colors.grey[200],
       body: Container(
