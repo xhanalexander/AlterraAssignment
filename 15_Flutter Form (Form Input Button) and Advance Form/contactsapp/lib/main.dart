@@ -1,3 +1,4 @@
+import 'package:contactsapp/form/content.dart';
 import 'package:contactsapp/form/homepage.dart';
 import 'package:flutter/material.dart';
 import 'form/contact.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeContact()
+      home: MyContact()
     );
   }
 }

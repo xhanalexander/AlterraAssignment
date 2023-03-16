@@ -1,7 +1,6 @@
 import 'package:contactsapp/form/content.dart';
+import 'package:contactsapp/form/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class MyContact extends StatefulWidget {
   const MyContact({super.key});
@@ -29,8 +28,8 @@ class _MyContactState extends State<MyContact> {
           color: Colors.white,
         ),
         child: Column(
-          children: const [
-            ContentContact()
+          children: [
+            ContentContact(),
           ],
         )
       ),
