@@ -26,7 +26,7 @@ class _MyContactState extends State<MyContact> {
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+          color: Colors.white38,
         ),
         child: Column(
           children: [
