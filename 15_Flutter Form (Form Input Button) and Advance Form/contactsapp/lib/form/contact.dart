@@ -1,5 +1,4 @@
 import 'package:contactsapp/form/content.dart';
-import 'package:contactsapp/form/homepage.dart';
 import 'package:flutter/material.dart';
 
 class MyContact extends StatefulWidget {
@@ -10,7 +9,6 @@ class MyContact extends StatefulWidget {
 }
 
 class _MyContactState extends State<MyContact> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class _MyContactState extends State<MyContact> {
           children: [
             ContentContact(),
           ],
-        )
+        ),
       ),
     );
   }
