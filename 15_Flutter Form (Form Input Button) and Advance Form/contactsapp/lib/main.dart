@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: allContact()
+      home: const allContact()
       // home: DateCalendar()
     );
   }
