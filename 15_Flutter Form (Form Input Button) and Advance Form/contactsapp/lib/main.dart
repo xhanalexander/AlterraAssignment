@@ -1,6 +1,6 @@
-import 'package:contactsapp/form/content.dart';
 import 'package:flutter/material.dart';
-import 'form/contact.dart';
+import 'package:contactsapp/advanceform/picker.dart';
+import 'package:contactsapp/form/content.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyContact()
+      home: allContact()
+      // home: DateCalendar()
     );
   }
 }

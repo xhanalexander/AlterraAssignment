@@ -14,7 +14,7 @@ class _MyContactState extends State<MyContact> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contacts'),
+        title: const Text('Add New Contacts'),
         centerTitle: true,
         backgroundColor: Color(0xff6750A4),
       ),
@@ -28,7 +28,7 @@ class _MyContactState extends State<MyContact> {
         ),
         child: Column(
           children: [
-            ContentContact(),
+            ContactForms()
           ],
         ),
       ),
