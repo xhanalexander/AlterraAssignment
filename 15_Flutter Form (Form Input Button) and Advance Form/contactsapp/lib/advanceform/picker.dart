@@ -1,15 +1,17 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:open_file/open_file.dart';
 
-class DateCalendar extends StatefulWidget {
-  const DateCalendar({super.key});
+class pickerApps extends StatefulWidget {
+  const pickerApps({super.key});
 
   @override
-  State<DateCalendar> createState() => _DateCalendarState();
+  State<pickerApps> createState() => _pickerAppsState();
 }
 
-class _DateCalendarState extends State<DateCalendar> {
+class _pickerAppsState extends State<pickerApps> {
   DateTime duesDate = DateTime.now();
   final currentDate = DateTime.now();
   Color currentColor = Colors.blue[300]!;
@@ -20,23 +22,25 @@ class _DateCalendarState extends State<DateCalendar> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Advance Forms'),
-        ),
-        body: Container(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            children: [
-              buildDateCalendar(context),
-              const SizedBox(height: 30,),
-              colorPickers(context),
-            
-            ],
-          )
+        appBarTheme: AppBarTheme(
+          backgroundColor: currentColor,
         )
       ),
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Advanced Forms'),
+          ),
+          body: Container(
+              padding: const EdgeInsets.all(20),
+              child: ListView(
+                children: [
+                  buildDateCalendar(context),
+                  const SizedBox(height: 30,),
+                  colorPickers(context),
+                  const SizedBox(height: 30,),
+                  fileChooser(context)
+                ],
+              ))),
     );
   }
 
@@ -47,7 +51,7 @@ class _DateCalendarState extends State<DateCalendar> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Current Date'),
+            const Text('Current Date'),
             TextButton(
               onPressed: () async {
                 final selectDate = await showDatePicker(
@@ -62,11 +66,14 @@ class _DateCalendarState extends State<DateCalendar> {
                   }
                 });
               },
-              child: Text('Select Date'),
+              child: Text('Select Date', style: TextStyle(color: currentColor)),
             )
           ],
         ),
-        Text(DateFormat('dd-MM-yyyy').format(duesDate), style: TextStyle(fontSize: 20),),
+        Text(
+          DateFormat('dd-MM-yyyy').format(duesDate),
+          style: const TextStyle(fontSize: 20),
+        ),
       ],
     );
   }
@@ -75,7 +82,7 @@ class _DateCalendarState extends State<DateCalendar> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Current Color'),
+        const Text('Current Color Scheme'),
         const SizedBox(height: 10,),
         Container(
           decoration: BoxDecoration(
@@ -95,19 +102,70 @@ class _DateCalendarState extends State<DateCalendar> {
         const SizedBox(height: 20,),
         Center(
           child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(currentColor),
-            ),
-            onPressed: () {}, 
-            child: const Text('Choose Color')
-          ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(currentColor),
+              ),
+              onPressed: () {
+                showDialog(
+                  context: context, 
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Choose Color'),
+                      content: BlockPicker(
+                        pickerColor: currentColor, 
+                        onColorChanged: (color) {
+                          setState(() {
+                            currentColor = color;
+                          });
+                        },
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }, 
+                          child: const Text('Save')
+                        ),
+                      ],
+                    );
+                  }
+                );
+              },
+              child: const Text('Choose Color')),
         )
       ],
     );
   }
 
-/*   Widget fileChooser(BuildContext context) {
+  Widget fileChooser(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('File Chooser'),
+        const SizedBox(height: 10,),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(currentColor),
+          ),
+          onPressed: () {
+            chooseFile();
+          },
+          child: const Text('Open File')
+        )
+      ],
+    );
+  }
 
-  } */
+  void chooseFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if ( result == null) return;
+
+    final file = result.files.first;
+    openFile(file);
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
+  }
+
 }
-
