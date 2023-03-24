@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppContact extends StatefulWidget {
   const AppContact({super.key});
@@ -10,26 +11,38 @@ class AppContact extends StatefulWidget {
 class _AppContactState extends State<AppContact> {
 
   final List<Map<String, String>> contactList = [
-  {"avatar": "L", "name": "Leanne Graham", "phone": "1-770-736-8031 x56442"},
-  {"avatar": "E", "name": "Ervin Howell", "phone": "010-692-6593 x09125"},
-  {"avatar": "C", "name": "Clementine Bauch", "phone": "1-463-123-4447"},
-  {"avatar": "S", "name": "Patricia Lebsack", "phone": "493-170-9623 x156"},
-  {"avatar": "C", "name": "Chelsey Dietrich", "phone": "(254)954-1289"},
-  {"avatar": "K", "name": "Kurtis Weissnat", "phone": "210.067.6132"},
-  {"avatar": "Z", "name": "Zenaya Krakozia", "phone": "434-170-9623 x156"},
-  {"avatar": "D", "name": "Dimitri Rascalov", "phone": "210.067.6132"},
+
+    {"avatar": "L", "name": "Leanne Graham", "phone": "1-770-736-8031 x56442"},
+    {"avatar": "E", "name": "Ervin Howell", "phone": "010-692-6593 x09125"},
+    {"avatar": "C", "name": "Clementine Bauch", "phone": "1-463-123-4447"},
+    {"avatar": "S", "name": "Patricia Lebsack", "phone": "493-170-9623 x156"},
+    {"avatar": "C", "name": "Chelsey Dietrich", "phone": "(254)954-1289"},
+    {"avatar": "K", "name": "Kurtis Weissnat", "phone": "210.067.6132"},
+    {"avatar": "Z", "name": "Zenaya Krakozia", "phone": "434-170-9623 x156"},
+    {"avatar": "D", "name": "Dimitri Rascalov", "phone": "210.067.6132"},
+    
   ];
 
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
-  final nameRegex = RegExp(r'^[A-Z][a-z]{1,}$');
+  final namesRegex = RegExp(r'^[A-Z][a-z]*\s[A-Z][a-z]*$');
+  final specRegex = RegExp(r'^[a-zA-Z\s]+$');
   final phoneRegex = RegExp(r'^0\d{7,14}$');
+  final numericRegex = RegExp(r'^[0-9]+$');
+  
 
+
+  @override
   void dispose () {
     _nameController.dispose();
     _phoneController.dispose();
     super.dispose();
+  }
+
+  void clear () {
+    _nameController.clear();
+    _phoneController.clear();
   }
 
   @override
@@ -90,9 +103,11 @@ class _AppContactState extends State<AppContact> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please fill the Name field';
-                    } else if (!nameRegex.hasMatch(value)) {
-                      return 'Name must start with an uppercase letter and not contain numbers or special characters.';
+                      return 'Nama harus diisi oleh user.';
+                    } else if (!namesRegex.hasMatch(value)) {
+                      return 'Nama harus terdiri dari minimal 2 kata, dan Setiap kata harus dimulai dengan huruf kapital.';
+                    } else if (!specRegex.hasMatch(value)) {
+                      return 'Nama tidak boleh mengandung angka atau karakter khusus'; 
                     } else {
                       return null;
                     } 
@@ -120,11 +135,18 @@ class _AppContactState extends State<AppContact> {
                       color: Color(0xff6750A4),
                     ),
                   ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter phone number';
-                    } else if (!phoneRegex.hasMatch(value)) {
-                      return 'Phone number must start with 0 and not contain letters or special characters.';
+                      return 'Nomor telepon harus diisi oleh user';  
+                    } else if (value.length < 8 || value.length > 15) {
+                      return 'Panjang nomor telepon harus minimal 8 digit dan maksimal 15 digit.';
+                    } else if (value.startsWith('0') == false ) {
+                      return 'Nomor telepon harus dimulai dengan 0';
+                    } else if (!numericRegex.hasMatch(value) ) {
+                      return 'Nomor telepon harus terdiri dari angka saja';
                     } else {
                       return null;
                     }
@@ -144,6 +166,7 @@ class _AppContactState extends State<AppContact> {
                           "name": _nameController.text,
                           "phone": _phoneController.text,
                         });
+                        clear();
                       });
                     }
                   },
@@ -165,13 +188,13 @@ class _AppContactState extends State<AppContact> {
                 const SizedBox(height: 20),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: contactList.length,
+                    itemCount: contactList.isNotEmpty ? contactList.length : 1,
                     itemBuilder: (context, index) {
-                      if (contactList != null) { 
+                      if (contactList.isNotEmpty) { 
                         return ListTile(
                           leading: CircleAvatar(
-                            backgroundColor: const Color(0xff6750A4),
-                            child: Text(contactList[index]['avatar']!, style: const TextStyle(color: Colors.white),),
+                            backgroundColor: const Color(0xffEADDFF),
+                            child: Text(contactList[index]['avatar']!, style: const TextStyle(color: Color(0xff21005D), fontWeight: FontWeight.bold),),
                           ),
                           title: Text(contactList[index]['name']!),
                           subtitle: Text(contactList[index]['phone']!),
@@ -180,14 +203,14 @@ class _AppContactState extends State<AppContact> {
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  
+                                  setState(() {
+                                  });
                                 },
                                 icon: const Icon(Icons.edit_outlined, color: Colors.black),
                               ),
                               IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    // contactList.removeAt(index);
                                     showDialog(
                                       context: context, 
                                       builder: (context) {
@@ -222,8 +245,8 @@ class _AppContactState extends State<AppContact> {
                           ),
                         );
                         } else {
-                          return const Text("No Contact");
-                      }
+                          return const Center(child: Text("No Contact", style: TextStyle(fontSize: 20, color: Colors.grey), ));
+                        }
                     },
                   ),
                 ),

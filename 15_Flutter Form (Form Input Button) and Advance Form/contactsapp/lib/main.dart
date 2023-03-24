@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const AppContact()
-      home: const pickerApps()
+      home: const AppContact()
+      // home: const pickerApps()
     );
   }
 }
