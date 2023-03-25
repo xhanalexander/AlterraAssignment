@@ -1,35 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:open_file/open_file.dart';
 
-class AppContact extends StatefulWidget {
-  const AppContact({super.key});
+class AppForms extends StatefulWidget {
+  const AppForms({super.key});
 
   @override
-  State<AppContact> createState() => _AppContactState();
+  State<AppForms> createState() => _AppFormsState();
 }
 
-class _AppContactState extends State<AppContact> {
+class _AppFormsState extends State<AppForms> {
 
-  final List<Map<String, String>> contactList = [
-
-    {"avatar": "L", "name": "Leanne Graham", "phone": "1-770-736-8031 x56442"},
-    {"avatar": "E", "name": "Ervin Howell", "phone": "010-692-6593 x09125"},
-    {"avatar": "C", "name": "Clementine Bauch", "phone": "1-463-123-4447"},
-    {"avatar": "S", "name": "Patricia Lebsack", "phone": "493-170-9623 x156"},
-    {"avatar": "C", "name": "Chelsey Dietrich", "phone": "(254)954-1289"},
-    {"avatar": "K", "name": "Kurtis Weissnat", "phone": "210.067.6132"},
-    {"avatar": "Z", "name": "Zenaya Krakozia", "phone": "434-170-9623 x156"},
-    {"avatar": "D", "name": "Dimitri Rascalov", "phone": "210.067.6132"},
-    
+  final List<Map<String, dynamic>> contactList = [
+    {
+      "avatar": "L",
+      "name": "Leanardo DiCaprio",
+      "phone": "081234567890",
+      "date": "12-12-2021",
+    },
+    {
+      "avatar": "J",
+      "name": "Jennifer Lawrence",
+      "phone": "081234567890",
+      "date": "12-12-2021",
+    },
   ];
 
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _dateController = TextEditingController();
   final namesRegex = RegExp(r'^[A-Z][a-z]*\s[A-Z][a-z]*$');
   final specRegex = RegExp(r'^[a-zA-Z\s]+$');
   final phoneRegex = RegExp(r'^0\d{7,14}$');
   final numericRegex = RegExp(r'^[0-9]+$');
+  
+  DateTime duesDate = DateTime.now();
+  final currentDate = DateTime.now();
   
   @override
   void dispose () {
@@ -53,7 +63,7 @@ class _AppContactState extends State<AppContact> {
       ),
       body: Container(
           width: double.infinity,
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.white38,
@@ -63,21 +73,14 @@ class _AppContactState extends State<AppContact> {
             child: Column(
               children: [
                 const SizedBox( height: 60,),
-                const Icon(
-                  Icons.mobile_friendly,
-                  size: 30,
-                  color: Colors.grey,
+ 
+                fileChooser(context),
+                const SizedBox(height: 20),
+                const Text(
+                  'Insert Profile Picture',
                 ),
-                const SizedBox(height: 30,),
-                const Text("Create New Contact", style: TextStyle(fontSize: 20),),
-                const SizedBox(height: 30,),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 25),
-                  child: const Text(
-                    "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
-                    style: TextStyle(fontSize: 13)),
-                ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
+
                 TextFormField(
                   controller: _nameController,
                   decoration:  InputDecoration(
@@ -149,8 +152,54 @@ class _AppContactState extends State<AppContact> {
                   },
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
+                TextFormField(
+                  controller: _dateController,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.purple[200]!),
+                    ),
+                    filled: true,
+                    fillColor: const Color(0xffE7E0EC),
+                    hintText: "Insert Birth Date",
+                    // labelText: "Insert Birth Date",
+                    labelStyle: const TextStyle(color: Color(0xff49454F)),
+                    prefixIcon: const Icon(
+                      Icons.date_range,
+                      color: Color(0xff6750A4),
+                    ),
+                  ),
+                  onTap: () async {
+                    final DateTime? date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                    );
+                    if (date != null) {
+                      String formattedDate = DateFormat('d MMMM yyyy').format(date);
+                      // parse formattedDate to string
+
+                      _dateController.text = formattedDate;
+                    }
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Tanggal harus diisi oleh user';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+
+                const SizedBox(height: 10),
+
+                const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
@@ -161,6 +210,7 @@ class _AppContactState extends State<AppContact> {
                           "avatar": _nameController.text[0].toUpperCase(),
                           "name": _nameController.text,
                           "phone": _phoneController.text,
+                          "date": _dateController.text,
                         });
                         clear();
                       });
@@ -193,7 +243,17 @@ class _AppContactState extends State<AppContact> {
                             child: Text(contactList[index]['avatar']!, style: const TextStyle(color: Color(0xff21005D), fontWeight: FontWeight.bold),),
                           ),
                           title: Text(contactList[index]['name']!),
-                          subtitle: Text(contactList[index]['phone']!),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(contactList[index]['phone']!),
+                              const SizedBox(height: 2),
+                              Text(
+                                contactList[index]['date']!,
+                                style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                              ),
+                            ]
+                          ),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -251,4 +311,45 @@ class _AppContactState extends State<AppContact> {
       )
     );
   }
+
+  Widget fileChooser(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10,),
+        Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.grey),
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              chooseFile();
+            },
+            child: Icon(Icons.add_a_photo),
+            style: ElevatedButton.styleFrom(
+              primary: Color(0xff6750A4),
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(20),
+            ),        
+          ),
+        )
+      ],
+    );
+  }
+
+  void chooseFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if ( result == null) return;
+
+    final file = result.files.first;
+    openFile(file);
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
+  }
+  
 }

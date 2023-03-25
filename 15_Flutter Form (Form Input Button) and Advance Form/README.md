@@ -25,5 +25,6 @@ Form pada umumnya memiliki sebuah validasi yang Fitur ini memungkinkan pengemban
 
 ____
 
-#### Task Documentation 
+#### Task Documentation Issues
 
+Beberapa kendala mengenai di task eksplorasi di soal Advanced Forms di file _contentPicker.dart_, yaitu menyimpan variable controller untuk warna dan file  dengan menggunakan TextFormFields, namun bisa untuk menyimpan controller untuk __DatePicker__, mungkin untuk kedepannya ada solusinya dari soal ini namun sudah diusahakan semaksimalnya.
