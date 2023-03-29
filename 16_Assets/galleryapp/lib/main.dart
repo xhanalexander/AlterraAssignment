@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:galleryapp/login.dart';
+import 'homePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,24 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Placeholder(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/home',
+      routes: {
+        '/': (context) => LoginForms(),
+        '/home': (context) => const HomePage(),
+      },
     );
-  }
-}
-
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
