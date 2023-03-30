@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Gallery Show App',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
-        '/': (context) => LoginForms(),
+        '/': (context) => const LoginForms(),
         '/home': (context) => const HomePage(),
       },
     );

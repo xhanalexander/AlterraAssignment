@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:galleryapp/data.dart';
+
+import 'imageFull.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,67 +40,33 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
+        crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: <Widget>[
-          // ImageCard(image: 'https://media4.giphy.com/media/H07HCwO2QrmWP8f0Ys/giphy.gif?cid=ecf05e477o2o091g7wdhe7hpe3htsbd6hj9ej1sj4dhbwz4o&rid=giphy.gif&ct=g', title: "Cat Sleeping"),
-          ImageCard(image: 'https://media4.giphy.com/media/H07HCwO2QrmWP8f0Ys/giphy.gif?cid=ecf05e477o2o091g7wdhe7hpe3htsbd6hj9ej1sj4dhbwz4o&rid=giphy.gif&ct=g', title: "Cats Sleep", description: "This is a description of the image"),
-          ImageCard(image: 'https://media4.giphy.com/media/H07HCwO2QrmWP8f0Ys/giphy.gif?cid=ecf05e477o2o091g7wdhe7hpe3htsbd6hj9ej1sj4dhbwz4o&rid=giphy.gif&ct=g', title: "Cats Sleep", description: "This is a description of the image"),
-        ],
-      )
+        children: List.generate(
+          imageList.length,
+          (index) => ImageCard(
+            pics: imageList[index]['image']!,
+            // title: imageList[index]['title']!,
+            description: imageList[index]['description']!,
+          ),
+        ),
+      ),
     );
   }
 
   Widget ImageCard({
-    required String image,
-    required String title,
+    required String pics,
+    // required String title,
     required String description,
   }) {
     return InkWell(
       onTap: () {
         showModalBottomSheet(
           context: context,
-          builder: (BuildContext context) {
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                color: Colors.white,
-              ),
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Close'),
-                  ),
-                ],
-              ),
-            );
+          builder: (context) {
+            return showCardDetails(image: pics, description: description);
           },
         );
       },
@@ -109,11 +78,11 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
-            Text(title, style: const TextStyle(fontSize: 18)),
+            // Text(title, style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
-            Expanded(
+            Flexible(
               child: Image(
-                image: NetworkImage(image),
+                image: Image.asset(pics).image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -125,6 +94,56 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget showCardDetails ({required String image, required String description}) {
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image(
+            image: Image.asset(image).image,
+            fit: BoxFit.fitWidth,
+            height: 300,
+          ),
+          // Text(title, style: const TextStyle(fontSize: 18)),
+          const SizedBox(height: 10),
+          Text(description, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Tidak'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FullImages(imagePath: image),
+                    ),
+                  );
+                },
+                child: const Text('Ya'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
