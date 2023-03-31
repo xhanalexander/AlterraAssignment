@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:galleryapp/data.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'imageFull.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +11,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late SharedPreferences logins;
+  String _name = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfAlreadyLogin();
+  }
+
+  void _checkIfAlreadyLogin() async {
+    logins = await SharedPreferences.getInstance();
+    setState(() {
+      _name = (logins.getString('name') ?? '');
+    });
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Welcome'),
+          content: RichText(
+            text: TextSpan(
+              text: 'Hello, ',
+              style: const TextStyle(color: Colors.black),
+              children: <TextSpan>[
+                TextSpan(
+                  text: _name,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              }, 
+              child: const Text('OK')
+            ),
+          ],
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +77,16 @@ class _HomePageState extends State<HomePage> {
               leading: const Icon(Icons.logout, color: Colors.red),
               title: const Text('Log Out', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
               onTap: () {
+                logins.setBool('login', false);
+                logins.remove('name');
+                Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
               },
             ),
           ],
         ),
       ),
       body: GridView.count(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,

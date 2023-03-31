@@ -64,3 +64,9 @@ class ExtractArgumentsScreen extends StatelessWidget {
 }
 ```
 
+___
+
+### Flutter Navigation Task Documentation
+
+Flutter Navigation diterapkan 2 halaman yaitu untuk login dan homepage, folder project-nya terdapat pada di folder [16_Materi Assets](https://github.com/xhanalexander/Flutter_Alexander-Achmad-Khan/tree/main/16_Assets/galleryapp) dan diterapkan pada file `main.dart` yang terdapat dari dalam isi [project-nya](https://github.com/xhanalexander/Flutter_Alexander-Achmad-Khan/blob/main/16_Assets/galleryapp/lib/main.dart).
+

@@ -37,9 +37,11 @@ class _LoginFormsState extends State<LoginForms> {
 
   void _checkIfAlreadyLogin() async {
     logins = await SharedPreferences.getInstance();
-    _newUser = (logins.getBool('newUser') ?? true);
-    if (!_newUser) {
-      Navigator.pushReplacementNamed(context, '/home');
+    _newUser = (logins.getBool('login') ?? true);
+    if (_newUser) {
+      // Navigator.pushReplacementNamed(context, '/home');
+      Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+
     }
   }
 
@@ -64,8 +66,11 @@ class _LoginFormsState extends State<LoginForms> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your name";
+                  } else if (value.length < 3) {
+                    return "Please enter a valid name";
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(40),
@@ -76,14 +81,19 @@ class _LoginFormsState extends State<LoginForms> {
                 controller: _emailController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: "Email",
+                  labelText: "Emails",
                   prefixIcon: Icon(Icons.email),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your email";
+                  } else if (!value.contains('@')) {
+                    return "Please enter a valid email";
+                  } else if (!value.contains('.')) {
+                    return "Please enter a valid email";
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(40),
@@ -112,8 +122,15 @@ class _LoginFormsState extends State<LoginForms> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your password";
+                  } else if (value.length < 6) {
+                    return "Password must be at least 6 characters";
+                  } else if (value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                    return "Password must be at least 1 special character";
+                  } else if (value.contains(RegExp(r'[0-9]'))) {
+                    return "Password must be at least 1 number";
+                  } else {
+                    null;
                   }
-                  return null;
                 },
               ),
               const SizedBox(height: 20,),
@@ -124,17 +141,18 @@ class _LoginFormsState extends State<LoginForms> {
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF0071F2),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Processing Data")),
-                        );
-                      }
+                      final validForms = _formKey.currentState!.validate();
+                        String name = _nameController.text;
+                        if (validForms) {
+                          logins.setBool('login', false);
+                          logins.setString('name', name);
+                          Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                        }
                     },
                     child: const Text("Sign In", style: TextStyle(fontSize: 20)),
                   ),

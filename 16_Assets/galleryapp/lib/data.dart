@@ -24,4 +24,9 @@ List<Map<String, String>> imageList = [
     'title': 'Scene',
     'description': 'This is the first image'
   },
+  {
+    'image': 'assets/images/matthieu-lemarchal.jpg',
+    'title': 'Doors',
+    'description': 'This is the first image'
+  }
 ];

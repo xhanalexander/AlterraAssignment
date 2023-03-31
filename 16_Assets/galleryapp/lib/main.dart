@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Gallery Show App',
       debugShowCheckedModeBanner: false,
+/*       theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'Roboto',
+      ), */
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginForms(),

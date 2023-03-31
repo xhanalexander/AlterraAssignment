@@ -5,7 +5,7 @@
 
 ### Alert Dialog
 
-Dalam flutter `AlertDialog` menginformasikan pengguna tentang situasi yang memerlukan pengakuan. Dialog peringatan memiliki judul opsional, konten opsional, dan daftar tindakan opsional. Judul ditampilkan di atas konten dan tindakan ditampilkan di bawah konten. Alert Dialog juga disediakan untuk tema IOS yaitu menggunakan class `CupertinoAlertDialog` hanya saja yang menjadi perbedaan ialah pada desainnya.
+Dalam flutter `AlertDialog` menginformasikan pengguna tentang situasi yang memerlukan pengakuan. Dialog peringatan memiliki judul opsional, konten opsional, dan daftar tindakan opsional. Judul ditampilkan di atas konten dan tindakan ditampilkan di bawah konten. Alert Dialog juga disediakan untuk tema iOS yaitu menggunakan class `CupertinoAlertDialog` hanya saja yang menjadi perbedaan ialah pada desainnya.
 
 | AlertDialog       | CupertinoAlertDialog       |
 |--     |--     |

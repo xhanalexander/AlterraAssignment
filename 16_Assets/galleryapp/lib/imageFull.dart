@@ -12,10 +12,12 @@ class FullImages extends StatelessWidget {
         title: const Text('Full Image'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.contain,
+      body: InteractiveViewer(
+        child: Center(
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );

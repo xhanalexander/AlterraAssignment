@@ -23,6 +23,3 @@ Image.asset perlu ditempatkan dalam direktori "assets" yang telah diatur dalam p
 
 - `Image.network()` akan memuat gambar secara asinkron dari URL ketika ditampilkan, sehingga membutuhkan waktu lebih lama untuk ditampilkan. Image.asset dapat diatur untuk berbagai resolusi gambar berbeda yang disesuaikan dengan jenis perangkat yang berbeda, sedangkan Image.network hanya menampilkan gambar dalam ukuran aslinya dari URL.
 
-
-
-
