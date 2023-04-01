@@ -3,5 +3,3 @@
 ## Summaries
 
 ### State
-
-State adalah 
