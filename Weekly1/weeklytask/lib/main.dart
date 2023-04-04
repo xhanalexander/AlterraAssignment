@@ -163,9 +163,7 @@ class _FormSignState extends State<FormSign> {
                       return null;
                     },
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(
@@ -180,9 +178,7 @@ class _FormSignState extends State<FormSign> {
                       return null;
                     },
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: passwordController,
                     decoration: const InputDecoration(
