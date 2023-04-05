@@ -3,7 +3,7 @@ import 'package:galleryapp/login.dart';
 import 'homePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
