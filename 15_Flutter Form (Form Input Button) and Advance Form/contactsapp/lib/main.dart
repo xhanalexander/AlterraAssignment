@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AppContact()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const AppContact(),
+        '/picker': (context) => const pickerApps(),
+      },
       // home: const pickerApps()
       // home: AppForms()
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'createNew.dart';
+
 class AppContact extends StatefulWidget {
   const AppContact({super.key});
 
@@ -10,6 +12,7 @@ class AppContact extends StatefulWidget {
 
 class _AppContactState extends State<AppContact> {
 
+  
   final List<Map<String, String>> contactList = [
 
     {"avatar": "L", "name": "Leanne Graham", "phone": "1-770-736-8031 x56442"},
@@ -23,7 +26,7 @@ class _AppContactState extends State<AppContact> {
     
   ];
 
-  final _formKey = GlobalKey<FormState>();
+  /* final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
   final namesRegex = RegExp(r'^[A-Z][a-z]*\s[A-Z][a-z]*$');
@@ -42,14 +45,40 @@ class _AppContactState extends State<AppContact> {
     _nameController.clear();
     _phoneController.clear();
   }
-
+ */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mobile App Contact'),
+        title: const Text('Contact List'),
         centerTitle: true,
         backgroundColor: const Color(0xff6750A4),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xff6750A4),
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return const NewContact();
+              },
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(1, 0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: child,
+                );
+              },
+            )
+          );
+          /* Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const NewContact()),
+          ); */
+        },
       ),
       body: Container(
           width: double.infinity,
@@ -59,10 +88,10 @@ class _AppContactState extends State<AppContact> {
             color: Colors.white38,
           ),
           child: Form(
-            key: _formKey,
+            // key: _formKey,
             child: Column(
               children: [
-                const SizedBox( height: 60,),
+ /*                const SizedBox( height: 60,),
                 const Icon(
                   Icons.mobile_friendly,
                   size: 30,
@@ -181,7 +210,7 @@ class _AppContactState extends State<AppContact> {
                 
                 const SizedBox(height: 30),
                 const Text("List Contact", style: TextStyle(fontSize: 20),),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20), */
                 Expanded(
                   child: ListView.builder(
                     itemCount: contactList.isNotEmpty ? contactList.length : 1,
