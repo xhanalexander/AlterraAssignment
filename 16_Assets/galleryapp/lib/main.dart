@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:galleryapp/login.dart';
 import 'homePage.dart';
+import 'package:provider/provider.dart';
+import 'imageDataView.dart' as image_view;
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => image_view.imageInfo(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
