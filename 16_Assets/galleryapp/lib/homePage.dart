@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:galleryapp/data.dart';
+// import 'package:galleryapp/data.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'imageFull.dart';
+import 'imageDataView.dart' as image_view;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   late SharedPreferences logins;
   String _name = '';
 
@@ -58,6 +59,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final imageInfo = Provider.of<image_view.imageInfo>(context);
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -92,21 +95,19 @@ class _HomePageState extends State<HomePage> {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         children: List.generate(
-          imageList.length,
+          imageInfo.pics.length,
           (index) => ImageCard(
-            pics: imageList[index]['image']!,
-            // title: imageList[index]['title']!,
-            description: imageList[index]['description']!,
+            pics: imageInfo.pics[index].imagePath,
+            title: imageInfo.pics[index].title,
+            description: imageInfo.pics[index].description,
           ),
         ),
-      ),
+      )
     );
   }
 
-  Widget ImageCard({
-    required String pics,
+  Widget ImageCard({required String pics, required String description, required String title,
     // required String title,
-    required String description,
   }) {
     return InkWell(
       onTap: () {
@@ -179,11 +180,22 @@ class _HomePageState extends State<HomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FullImages(imagePath: image),
-                    ),
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) => FullImages(imagePath: image),
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        var begin = Offset(0.0, 1.0);
+                        var end = Offset.zero;
+                        var curve = Curves.ease;
+
+                        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                    )
                   );
                 },
                 child: const Text('Ya'),

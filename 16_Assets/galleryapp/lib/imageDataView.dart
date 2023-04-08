@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:galleryapp/model.dart';
 
 class imageInfo with ChangeNotifier {
-  final List<GalleryItem> _pictures = [
+
+  final List<GalleryItem> pics = [
     GalleryItem(
       imagePath: 'assets/images/alex-geerts-cvIKDPfcHqw-unsplash.jpg',
       title: 'Title 1',
@@ -15,10 +16,10 @@ class imageInfo with ChangeNotifier {
     ),
   ];
 
-  List<GalleryItem> get pictures => _pictures;
+  List<GalleryItem> get pictures => pics;
 
   void addPicture(GalleryItem picture) {
-    _pictures.add(picture);
+    pics.add(picture);
     notifyListeners();
   }
 }

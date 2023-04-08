@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:galleryapp/homePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForms extends StatefulWidget {
@@ -151,7 +152,13 @@ class _LoginFormsState extends State<LoginForms> {
                         if (validForms) {
                           logins.setBool('login', false);
                           logins.setString('name', name);
-                          Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                          // Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) => const HomePage(),
+                              transitionsBuilder: (context, animation1, animation2, child) => FadeTransition(opacity: animation1, child: child),
+                            )
+                            , (Route<dynamic> route) => false);
                         }
                     },
                     child: const Text("Sign In", style: TextStyle(fontSize: 20)),
