@@ -1,4 +1,4 @@
-List<Map<String, String>> imageList = [
+/* List<Map<String, String>> imageList = [
   {
     'image': 'assets/images/alex-geerts-cvIKDPfcHqw-unsplash.jpg',
     'title': 'Sunset',
@@ -29,4 +29,4 @@ List<Map<String, String>> imageList = [
     'title': 'Doors',
     'description': 'This is the first image'
   }
-];
+]; */
