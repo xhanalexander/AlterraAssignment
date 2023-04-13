@@ -130,6 +130,7 @@ class _WelcomePageState extends State<WelcomePage> {
             const SizedBox(height: 20),
             const Text(
               'Welcome to CampuScholarShip',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
