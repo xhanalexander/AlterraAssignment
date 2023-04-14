@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weeklytask/view/about_page.dart';
-import 'package:weeklytask/view/welcome_page.dart';
+import 'package:weeklytask/screen/about_page.dart';
+import 'package:weeklytask/screen/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
