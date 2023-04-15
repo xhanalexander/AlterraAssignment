@@ -1,8 +1,9 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import '../model/api/contact_api.dart';
 import '../model/contact_model.dart';
 
-class ContactViewsModel with ChangeNotifier {
+class ContactViewsModel extends ChangeNotifier {
 
   // private variable
   List<Contacts> _contacts = [];
@@ -15,6 +16,9 @@ class ContactViewsModel with ChangeNotifier {
     final c = await APIContact.getContacts();
     _contacts = c;
     notifyListeners();
+
+    // log(">> results =" + c.toString());
   }
   
+
 }

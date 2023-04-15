@@ -1,3 +1,4 @@
+import 'dart:developer';
 import '../contact_model.dart';
 import 'package:dio/dio.dart';
 
@@ -15,10 +16,16 @@ class APIContact {
       ),
     );
 
+    log(">> results =" + response.statusCode.toString());
+
     if (response.statusCode == 200) {
       List<Contacts> contacts = (response.data as List)
-        .map((e) => Contacts(id: e['id'], name: e['name'], phone: e['phone']))
-        .toList();
+        .map((e) => Contacts(
+          // failed parse
+          id: e['id'], 
+          name: e['name'], 
+          phone: e['phone']
+        )).toList();
       return contacts;  
     } else {
       throw Exception('Failed to load contacts');

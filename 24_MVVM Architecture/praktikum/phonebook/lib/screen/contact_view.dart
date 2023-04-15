@@ -11,12 +11,18 @@ class ContactViews extends StatefulWidget {
 
 class _ContactViewsState extends State<ContactViews> {
 
-  @override
+  /* @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<ContactViewsModel>(context, listen: false).getAllContacts();
     });
+  } */
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ContactViewsModel>(context, listen: false).getAllContacts();
   }
 
   @override
@@ -24,20 +30,19 @@ class _ContactViewsState extends State<ContactViews> {
     final modelView = Provider.of<ContactViewsModel>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Phonebook'),
+        title: const Text('Phonebook'),
+        centerTitle: true,
       ),
-      body: Provider.value(
-        value: modelView,
-        child: ListView.builder(
-          itemCount: modelView.contacts.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(modelView.contacts[index].name),
-              subtitle: Text(modelView.contacts[index].phone),
-            );
-          },
-        ),
-      )
+      body: ListView.builder(
+        itemCount: modelView.contacts.length,
+        itemBuilder: (context, index) {
+          final contact = modelView.contacts[index];
+          return ListTile(
+            title: Text(contact.name),
+            subtitle: Text(contact.phone),
+          );
+        },
+      ),
     );
   }
 }
