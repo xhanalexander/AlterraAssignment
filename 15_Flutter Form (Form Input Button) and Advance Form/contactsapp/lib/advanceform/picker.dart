@@ -27,20 +27,22 @@ class _pickerAppsState extends State<pickerApps> {
         )
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Advanced Forms'),
+        appBar: AppBar(
+          title: const Text('Advanced Forms'),
+        ),
+        body: Container(
+          padding: const EdgeInsets.all(20),
+          child: ListView(
+            children: [
+              buildDateCalendar(context),
+              const SizedBox(height: 30,),
+              colorPickers(context),
+              const SizedBox(height: 30,),
+              fileChooser(context)
+            ],
           ),
-          body: Container(
-              padding: const EdgeInsets.all(20),
-              child: ListView(
-                children: [
-                  buildDateCalendar(context),
-                  const SizedBox(height: 30,),
-                  colorPickers(context),
-                  const SizedBox(height: 30,),
-                  fileChooser(context)
-                ],
-              ))),
+        ),
+      ),
     );
   }
 
